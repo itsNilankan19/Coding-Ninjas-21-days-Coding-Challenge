@@ -1,0 +1,53 @@
+Question --
+
+
+You are given an integer 'n'
+Return 'true'if 'n' is an Armstrong number, and 'false' otherwise.
+
+Note:
+
+An Armstrong number is a number (with 'k' digits) such that the sum of its digits raised to 'kth' power is equal to the number itself. For example, 371 is an Armstrong number because 3^3+ 7^3 + 1^3 = 371.
+
+Example:
+
+Input: 'n' = 1634
+Output: true
+
+Explanation:
+
+1634 is an Armstrong number, as 1^4+ 6^4+ 3^4+4^4 = 1634
+
+
+
+
+Solution --
+
+
+import java.util.*;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+		Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        
+        System.out.println(isArmstrongNumber(number));
+        
+        scanner.close();
+    }
+    
+    public static boolean isArmstrongNumber(int num) {
+        int originalNum = num;
+        int numDigits = String.valueOf(num).length();
+        int sum = 0;
+        
+        while (num > 0) {
+            int digit = num % 10;
+            sum += Math.pow(digit, numDigits);
+            num /= 10;
+        }
+        
+        return sum == originalNum;
+
+	}
+}
