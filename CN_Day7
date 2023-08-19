@@ -1,0 +1,63 @@
+Question --
+
+
+The Look-And-Say sequence is a sequence of positive integers. The sequence is as
+
+
+follows:
+
+1, 11, 21, 1211, 111221, 312211, 13112221,...
+
+This sequence is constructed in the following way:
+
+The first number is 1.
+This is read as "One 1". Hence, the second number will be 11.
+The second number is read as "Two 15". Hence, the third number will be 21.
+The third number is read as "One 2, One 1".
+Hence, the fourth number will be 1211. And so on.
+
+The fourth term is read as "One 1, One 2, Two 1s".
+Hence, the fifth term will be 111221. And so on.
+
+Given an integer N, find the Nth term of the sequence.
+
+
+
+
+Solution --
+
+public class Solution {
+	public static String lookAndSaySequence(int n) {
+		// Write your code here.
+		if (n <= 0) {
+        return "";
+    }
+
+    String currentTerm = "1";
+
+    for (int i = 1; i < n; i++) {
+        currentTerm = generateNextTerm(currentTerm);
+    }
+
+    return currentTerm;
+}
+
+private static String generateNextTerm(String currentTerm) {
+    StringBuilder nextTerm = new StringBuilder();
+    char[] chars = currentTerm.toCharArray();
+    int length = chars.length;
+    int count = 1;
+
+    for (int i = 0; i < length; i++) {
+        if (i + 1 < length && chars[i] == chars[i + 1]) {
+            count++;
+        } else {
+            nextTerm.append(count).append(chars[i]);
+            count = 1;
+        }
+    }
+
+    return nextTerm.toString();
+	
+	}
+}
