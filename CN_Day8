@@ -1,0 +1,35 @@
+Question --
+
+Ayush is given a number 'X'. He has been told that he has to find the first 'X' terms of the series 3 * 'N' + 2, which are not multiples of 4. Help Ayush to find it as he has not been able to answer. 
+Example: Given an 'X' = 4. The output array/list which must be passed to Ayush will be [5, 11, 14, 17].
+
+Constraints:
+1 <= T <= 10^2
+1 <= X <= 10^5
+
+Time Limit: 1 sec
+
+
+Solution --
+
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static int[] termsOfAP(int x){
+		// Write your code here.
+		int[] result = new int[x];
+    int count = 0;
+    int num = 5; // The initial number in the sequence
+    
+    // Compute the first x numbers in the sequence
+    for (int i = 0; count < x; i++) {
+        if (num % 4 != 0) {
+            result[count] = num;
+            count++;
+        }
+        num += (i % 2 == 0) ? 9 : 2; // Use 9 or 2 as the increment alternatively
+    }
+    
+    return result;
+	}
+}
